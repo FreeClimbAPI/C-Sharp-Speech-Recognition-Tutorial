@@ -23,7 +23,7 @@ namespace SpeechRecognition.Controllers {
     [HttpPost ("/CreateCall")]
     public void CreateCall ([FromBody] string value) {
       string accountId = System.Environment.GetEnvironmentVariable("ACCOUNT_ID");
-      string authToken = System.Environment.GetEnvironmentVariable("AUTH_TOKEN");
+      string apiKey = System.Environment.GetEnvironmentVariable("API_KEY");
 
       // Set up Call Details
       string applicationId = System.Environment.GetEnvironmentVariable("APPLICATION_ID");
@@ -32,7 +32,7 @@ namespace SpeechRecognition.Controllers {
 
       try {
         // Create the FreeClimbClient
-        FreeClimbClient client = new FreeClimbClient (accountId, authToken);
+        FreeClimbClient client = new FreeClimbClient (accountId, apiKey);
         // Create a Call
         Call call = client.getCallsRequester.create (phoneNumber, // To
           freeclimbPhoneNumber, // From,
